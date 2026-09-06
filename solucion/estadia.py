@@ -16,3 +16,7 @@ class Estadia:
             raise TypeError("Se ha rechazado el modificador, porque no cumple con el contrato")
 
         self._modificadores.append(modificador)
+
+    @property
+    def modificadores(self):
+        return tuple(self._modificadores)
