@@ -28,3 +28,12 @@ class Estadia:
             total = modificador.aplicar(total, self.horas)
 
         return total
+
+class EstadiaMensual(Estadia):
+    def __init__(self, patente, horas, porcentaje_descuento):
+        super().__init__(patente, horas)
+
+        if porcentaje_descuento <= 0:
+            raise ValueError("El porcentaje de descuento debe ser positivo")
+
+        self.porcentaje_descuento = porcentaje_descuento
