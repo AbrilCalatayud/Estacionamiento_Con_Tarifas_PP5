@@ -40,3 +40,11 @@ class EstadiaMensual(Estadia):
 
     def total(self, tarifa_por_hora):
         return super().total(tarifa_por_hora) * (1 - self.porcentaje_descuento)
+
+def facturar(estadias, tarifa_por_hora):
+    total_general = 0.0
+
+    for estadia in estadias:
+        total_general += estadia.total(tarifa_por_hora)
+
+    return total_general
