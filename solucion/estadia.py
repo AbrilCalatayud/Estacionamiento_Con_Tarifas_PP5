@@ -33,7 +33,10 @@ class EstadiaMensual(Estadia):
     def __init__(self, patente, horas, porcentaje_descuento):
         super().__init__(patente, horas)
 
-        if porcentaje_descuento <= 0:
-            raise ValueError("El porcentaje de descuento debe ser positivo")
+        if porcentaje_descuento <= 0 or porcentaje_descuento >= 100:
+            raise ValueError("El porcentaje de descuento debe ser positivo y menor a 100")
 
-        self.porcentaje_descuento = porcentaje_descuento
+        self.porcentaje_descuento = porcentaje_descuento / 100
+
+    def total(self, tarifa_por_hora):
+        return super().total(tarifa_por_hora) * (1 - self.porcentaje_descuento)
