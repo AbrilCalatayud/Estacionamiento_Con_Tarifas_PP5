@@ -20,3 +20,11 @@ class Estadia:
     @property
     def modificadores(self):
         return tuple(self._modificadores)
+
+    def total(self, tarifa_por_hora):
+        total = tarifa_por_hora * self.horas
+
+        for modificador in self._modificadores:
+            total = modificador.aplicar(total, self.horas)
+
+        return total
