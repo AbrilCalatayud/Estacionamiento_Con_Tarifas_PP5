@@ -10,3 +10,9 @@ class Estadia:
         self.patente = patente
         self.horas = horas
         self._modificadores = []
+
+    def agregar_modificador(self, modificador):
+        if not isinstance(modificador, ModificadorTarifa):
+            raise TypeError("Se ha rechazado el modificador, porque no cumple con el contrato")
+
+        self._modificadores.append(modificador)
